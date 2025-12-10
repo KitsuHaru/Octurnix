@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Octurnix Coffee</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <a href="#" class="logo">
+        <img src="img/logo.png" alt="Octurnix Logo"> 
+        <span class="brand"><span class="blue">OCTURN</span><span class="orange">!X</span></span>
+    </a>
+    <ul class="nav-links">
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#story">Story</a></li>
+        <li><a href="#store">Store</a></li>
+    </ul>
+    <button class="nav-btn" onclick="openOrderModal()">Order Now</button>
+</nav>
+
+<section class="hero" id="home">
+    <div class="hero-text">
+        <h1>Teman Setia<br>di Kala <span>Malam.</span></h1>
+        <p>Rasakan kehangatan dari racikan kopi otentik. Ditemani sang rubah malam, setiap tegukan Octurn!X membangkitkan inspirasimu.</p>
+        <a href="#menu" class="cta-btn">Lihat Menu</a>
+    </div>
+    <div class="hero-img">
+        <img src="img/mascot-main.png" alt="Octurnix Mascot Fox">
+    </div>
+</section>
+
+<section id="menu" class="menu">
+    <h2 class="section-title">Signature <span>Menu</span></h2>
+    <div class="menu-grid">
+        
+        <div class="menu-card">
+            <div class="menu-img-container">
+                <img src="img/menu-himalayan.jpg" alt="Himalayan Caramel">
+            </div>
+            <h3>Himalayan Caramel</h3>
+            <p>Latte premium dengan caramel Himalayan yang manis dan smooth.</p>
+        </div>
+
+        <div class="menu-card">
+            <div class="menu-img-container">
+                <img src="img/menu-kopisusu.jpg" alt="Kopi Susu Octurnix">
+            </div>
+            <h3>Kopi Susu Octurn!x</h3>
+            <p>Signature blend dengan sentuhan susu creamy dan aroma khas.</p>
+        </div>
+
+        <div class="menu-card">
+            <div class="menu-img-container">
+                <img src="img/menu-blackano.jpg" alt="Blackano">
+            </div>
+            <h3>Blackano</h3>
+            <p>Hitam pekat, karakter kuat. Peneman begadang sejati.</p>
+        </div>
+
+        <div class="menu-card">
+            <div class="menu-img-container">
+                <img src="img/menu-matcha.jpg" alt="Matcha Latte">
+            </div>
+            <h3>Matcha Latte</h3>
+            <p>Matcha premium yang earthy dipadukan susu lembut.</p>
+        </div>
+
+    </div>
+</section>
+
+<section id="story" class="story">
+    <div class="story-img">
+        <img src="img/mascot-story.png" alt="Octurnix Story">
+    </div>
+    <div class="story-content">
+        <h2 class="section-title" style="text-align: left;">The <span>Story</span></h2>
+        <h3>Kenapa Rubah Malam?</h3>
+        <p>
+            Octurn!X lahir dari keresahan para pejuang malam. Kami percaya bahwa ide-ide cemerlang sering muncul ketika matahari terbenam. 
+        </p>
+        <p>
+            Seperti rubah yang tangkas di malam hari, kopi kami diracik untuk menjaga fokusmu tetap tajam namun hati tetap hangat. Kami bukan sekadar kedai kopi, kami adalah teman setiamu dalam keheningan malam.
+        </p>
+    </div>
+</section>
+
+<section id="store" class="store">
+    <h2 class="section-title">Find Our <span>Store</span></h2>
+    <div class="store-details">
+        <div class="info-box">
+            <i class="fas fa-map-marker-alt"></i>
+            <h4>Lokasi Utama</h4>
+            <p>Jl. Warakas IV Gg.9 / 36<br>Tanjung Priok, Jakarta Utara</p>
+        </div>
+        <div class="info-box">
+            <i class="fas fa-clock"></i>
+            <h4>Jam Operasional</h4>
+            <p>Senin - Minggu<br>16.00 - 02.00 WIB</p>
+        </div>
+        <div class="info-box">
+            <i class="fas fa-phone-alt"></i>
+            <h4>Contact</h4>
+            <p>+62 857-7006-9187<br>@octurnix.coffee</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2025 Octurn!X Coffee. Crafted with Passion.</p>
+</footer>
+
+<div class="modal-overlay" id="orderModal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeOrderModal()">&times;</span>
+        <h2 style="font-family: 'Patrick Hand'; color: var(--deep-navy);">Mau Pesan Lewat Mana?</h2>
+        <p style="margin-top:10px; color:#666;">Nikmati Octurn!X di rumahmu.</p>
+        
+        <div class="order-options">
+            <a href="https://gofood.co.id" target="_blank" class="order-btn btn-gofood">
+                <i class="fas fa-motorcycle"></i> Pesan via GoFood
+            </a>
+            <a href="https://grab.com/id/food/" target="_blank" class="order-btn btn-grab">
+                <i class="fas fa-utensils"></i> Pesan via GrabFood
+            </a>
+            <a href="https://wa.me/6285770069187?text=Halo%20Octurnix,%20saya%20mau%20pesan%20kopi..." target="_blank" class="order-btn btn-wa">
+                <i class="fab fa-whatsapp"></i> Chat WhatsApp
+            </a>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

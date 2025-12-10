@@ -1,0 +1,142 @@
+:root {
+    --fox-orange: #FF8F40;
+    --fox-dark: #D35400;
+    --slate-blue: #5A7D9A;
+    --deep-navy: #2C3E50;
+    --cream-bg: #FFFDF7;
+    --white: #FFFFFF;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--cream-bg); color: var(--deep-navy); font-family: "Quicksand", sans-serif; scroll-behavior: smooth; }
+
+/* TYPOGRAPHY */
+h1, h2, h3, .brand, .nav-btn, .cta-btn, .section-title {
+    font-family: "Patrick Hand", cursive; letter-spacing: 1px;
+}
+
+/* NAVBAR */
+.navbar {
+    width: 100%; padding: 15px 7%; display: flex; justify-content: space-between; align-items: center;
+    background: rgba(255, 253, 247, 0.95); position: fixed; top: 0; z-index: 100;
+    box-shadow: 0 2px 10px rgba(90, 125, 154, 0.1);
+}
+.navbar .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.navbar .logo img { height: 45px; width: auto; } /* Style untuk logo */
+
+.brand { font-size: 1.8rem; font-weight: 700; }
+.brand .blue { color: var(--slate-blue); }
+.brand .orange { color: var(--fox-orange); }
+
+.nav-links { list-style: none; display: flex; gap: 30px; }
+.nav-links a { text-decoration: none; color: var(--slate-blue); font-weight: 600; font-size: 1.1rem; transition: 0.3s; }
+.nav-links a:hover { color: var(--fox-orange); }
+
+.nav-btn {
+    padding: 8px 25px; border: 2px solid var(--fox-orange); background: transparent;
+    color: var(--fox-orange); font-size: 1.1rem; border-radius: 20px; cursor: pointer; transition: 0.3s;
+}
+.nav-btn:hover { background: var(--fox-orange); color: white; }
+
+/* SECTIONS GLOBAL */
+section { padding: 100px 7% 60px; min-height: 80vh; }
+.section-title { font-size: 3rem; text-align: center; margin-bottom: 40px; color: var(--deep-navy); }
+.section-title span { color: var(--fox-orange); }
+
+/* HERO */
+.hero {
+    margin-top: 60px; display: flex; align-items: center; justify-content: space-between;
+    background: radial-gradient(circle at top right, rgba(90, 125, 154, 0.1), transparent 40%);
+}
+.hero-text h1 { font-size: 3.8rem; line-height: 1.2; color: var(--slate-blue); margin-bottom: 20px; }
+.hero-text span { color: var(--fox-orange); }
+.hero-text p { font-size: 1.2rem; margin-bottom: 30px; width: 90%; }
+.cta-btn {
+    padding: 12px 35px; border-radius: 30px; border: none; color: #fff; background: var(--fox-orange);
+    font-size: 1.3rem; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 15px rgba(255, 143, 64, 0.4); text-decoration: none; display: inline-block;
+}
+.cta-btn:hover { background: var(--fox-dark); transform: translateY(-3px); }
+.hero-img img { width: 450px; filter: drop-shadow(0 10px 20px rgba(44, 62, 80, 0.2)); }
+
+/* MENU */
+.menu { background: var(--white); }
+.menu-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
+.menu-card {
+    background: var(--cream-bg); padding: 20px; width: 280px; border-radius: 20px;
+    border: 2px solid rgba(90, 125, 154, 0.1); text-align: center; transition: 0.3s; position: relative;
+    display: flex; flex-direction: column; align-items: center;
+}
+.menu-card:hover { transform: translateY(-10px); border-color: var(--fox-orange); }
+.menu-card h3 { color: var(--slate-blue); font-size: 1.5rem; margin-bottom: 10px; margin-top: 15px; }
+
+/* Style Khusus Gambar Menu */
+.menu-img-container {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    border-radius: 15px;
+    background: #eee; /* Warna placeholder jika gambar gagal load */
+}
+.menu-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Agar gambar tidak gepeng */
+    transition: 0.3s;
+}
+.menu-card:hover .menu-img-container img {
+    transform: scale(1.1); /* Efek zoom saat hover */
+}
+
+/* STORY */
+.story { display: flex; align-items: center; gap: 50px; background: #FFF8F0; } 
+.story-content { flex: 1; }
+.story-content h3 { font-size: 2rem; color: var(--slate-blue); margin-bottom: 15px; }
+.story-content p { font-size: 1.1rem; line-height: 1.8; margin-bottom: 15px; }
+.story-img { flex: 1; text-align: center; }
+.story-img img { width: 80%; border-radius: 20px; transform: rotate(-3deg); border: 5px solid var(--white); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+
+/* STORE */
+.store { text-align: center; }
+.store-details { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 30px; }
+.info-box { background: white; padding: 30px; border-radius: 15px; width: 300px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+.info-box i { font-size: 2rem; color: var(--fox-orange); margin-bottom: 15px; }
+.info-box h4 { font-size: 1.3rem; margin-bottom: 10px; color: var(--slate-blue); }
+
+/* MODAL ORDER */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(44, 62, 80, 0.7); z-index: 1000;
+    display: none; justify-content: center; align-items: center;
+    opacity: 0; transition: opacity 0.3s ease;
+}
+.modal-overlay.active { display: flex; opacity: 1; }
+
+.modal-content {
+    background: white; padding: 40px; border-radius: 20px; text-align: center;
+    width: 90%; max-width: 400px; position: relative;
+    transform: translateY(20px); transition: transform 0.3s ease;
+}
+.modal-overlay.active .modal-content { transform: translateY(0); }
+
+.close-modal {
+    position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer; color: #999;
+}
+.order-options { display: flex; flex-direction: column; gap: 15px; margin-top: 25px; }
+.order-btn {
+    padding: 15px; border-radius: 10px; text-decoration: none; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.2s;
+}
+.btn-gofood { background: #EE2737; color: white; }
+.btn-grab { background: #00B14F; color: white; }
+.btn-wa { background: #25D366; color: white; }
+.order-btn:hover { opacity: 0.9; transform: scale(1.02); }
+
+/* FOOTER */
+footer { text-align: center; padding: 25px; background: var(--deep-navy); color: var(--cream-bg); margin-top: 0; }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .hero, .story { flex-direction: column; text-align: center; gap: 40px; }
+    .hero-img img, .story-img img { width: 80%; }
+    .nav-links { display: none; }
+    .navbar { justify-content: space-between; }
+}
