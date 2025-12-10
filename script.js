@@ -9,14 +9,14 @@ function closeOrderModal() {
     modal.classList.remove('active');
 }
 
-// Tutup modal jika klik di luar area putih (background gelap)
+// Tutup modal jika klik di luar area putih
 modal.addEventListener('click', function(e) {
     if (e.target === modal) {
         closeOrderModal();
     }
 });
 
-// Smooth Scrolling untuk Navbar agar perpindahan halus
+// Smooth Scrolling untuk Navbar
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
