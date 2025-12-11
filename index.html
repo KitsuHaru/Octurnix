@@ -22,7 +22,7 @@
     </a>
     <ul class="nav-links">
         <li><a href="#menu">Menu</a></li>
-        <li><a href="#story">Story</a></li>
+        <li><a href="#photobooth">Photobooth</a></li> <li><a href="#story">Story</a></li>
         <li><a href="#store">Store</a></li>
     </ul>
     <button class="nav-btn" onclick="openOrderModal()">Order Now</button>
@@ -71,15 +71,15 @@
     <h3 class="menu-category">All Menu</h3>
     <div class="menu-grid">
 
-         <div class="menu-card">
+        <div class="menu-card">
             <div class="menu-img-container">
-                <img src="img/menu-blackano.jpg" alt="Blackano">
+                <img src="img/menu-himalayan.jpg" alt="Himalayan Caramel">
             </div>
-            <h3>Blackano</h3>
-            <span class="price-tag">Rp 8.000</span>
+            <h3>Himalayan Caramel Latte</h3>
+            <span class="price-tag">Rp 12.000</span>
         </div>
 
-         <div class="menu-card">
+        <div class="menu-card">
             <div class="menu-img-container">
                 <img src="img/menu-kopisusu.jpg" alt="Kopi Susu Octurnix">
             </div>
@@ -89,10 +89,10 @@
 
         <div class="menu-card">
             <div class="menu-img-container">
-                <img src="img/menu-milo.jpg" alt="Milosourus">
+                <img src="img/menu-blackano.jpg" alt="Blackano">
             </div>
-            <h3>Milosourus</h3>
-            <span class="price-tag">Rp 10.000</span>
+            <h3>Blackano</h3>
+            <span class="price-tag">Rp 8.000</span>
         </div>
 
         <div class="menu-card">
@@ -105,15 +105,51 @@
 
         <div class="menu-card">
             <div class="menu-img-container">
-                <img src="img/menu-himalayan.jpg" alt="Himalayan Caramel">
+                <img src="img/menu-milo.jpg" alt="Milosourus">
             </div>
-            <h3>Himalayan Caramel Latte</h3>
-            <span class="price-tag">Rp 12.000</span>
+            <h3>Milosourus</h3>
+            <span class="price-tag">Rp 10.000</span>
         </div>
 
     </div>
 </section>
 
+<section id="photobooth" class="photobooth">
+    <h2 class="section-title">Foto Bareng <span>Octurn!X</span></h2>
+    <p class="photobooth-desc">Abadikan momen kopimu dengan frame maskot Octurn!X. Hasil foto siap cetak dan bagus buat Story IG!</p>
+    
+    <div class="photobooth-container">
+        
+        <div class="camera-preview">
+            <video id="cameraStream" autoplay></video>
+            <img src="img/frame-maskot.png" alt="Octurnix Frame" class="frame-overlay">
+        </div>
+        
+        <button id="captureBtn" class="cta-btn capture-btn">
+            <i class="fas fa-camera"></i> Ambil Foto
+        </button>
+
+        <canvas id="photoCanvas" style="display:none;"></canvas>
+    </div>
+
+    <div class="photo-result" id="photoResult" style="display:none;">
+        <h3 style="color:var(--fox-dark);">Foto Berhasil Diambil!</h3>
+        <img id="finalPhoto" src="" alt="Hasil Photobooth" class="final-photo">
+        <a id="downloadLink" class="cta-btn download-btn" download="octurnix_photobooth.png">
+            <i class="fas fa-download"></i> Unduh Foto HD
+        </a>
+        <button class="cta-btn capture-btn try-again-btn" onclick="startCamera()">
+             <i class="fas fa-redo"></i> Coba Lagi
+        </button>
+    </div>
+
+    <div class="loading-message" id="loadingMessage" style="display:none;">
+        <i class="fas fa-spinner fa-spin"></i> Memuat Kamera...
+    </div>
+    <div class="error-message" id="errorMessage" style="display:none;">
+        <i class="fas fa-exclamation-triangle"></i> Gagal mengakses kamera. Pastikan Anda memberikan izin!
+    </div>
+</section>
 <section id="story" class="story">
     <div class="story-img">
         <img src="img/mascot-story.png" alt="Octurnix Story">
