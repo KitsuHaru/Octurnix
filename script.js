@@ -44,7 +44,7 @@ const loadingMessage = document.getElementById('loadingMessage');
 const errorMessage = document.getElementById('errorMessage');
 const frameImage = new Image();
 
-// Asumsikan Frame PNG Anda adalah 16:9 (misal 1920x1080)
+// Target resolusi final: Landscape HD 16:9 (1920x1080)
 const TARGET_WIDTH = 1920; 
 const TARGET_HEIGHT = 1080;
 frameImage.src = 'img/frame-maskot.png'; 
@@ -59,7 +59,7 @@ function startCamera() {
     captureBtn.style.display = 'block';
     photoResult.style.display = 'none';
     
-    // Perubahan: Minta resolusi 16:9 atau setinggi mungkin
+    // Minta resolusi 16:9 atau setinggi mungkin
     navigator.mediaDevices.getUserMedia({ 
         video: { 
             facingMode: "user", 
@@ -102,7 +102,7 @@ function capturePhoto() {
     // 1. Gambar Video ke Canvas
     const context = canvas.getContext('2d');
     
-    // Dimensi Video
+    // Dimensi Video dari perangkat
     const videoWidth = video.videoWidth;
     const videoHeight = video.videoHeight;
     const videoRatio = videoWidth / videoHeight;
@@ -110,17 +110,17 @@ function capturePhoto() {
 
     let drawWidth, drawHeight, x = 0, y = 0;
 
-    // Hitung cara menggambar video agar mengisi canvas 16:9 tanpa merusak aspek video
-    if (videoRatio < targetRatio) {
-        // Video lebih 'tinggi' dari 16:9, paskan tinggi, potong samping
+    // REVISI: Hitung cara menggambar video agar memenuhi target 16:9 (Crop-to-fill, seperti object-fit: cover)
+    if (videoRatio > targetRatio) {
+        // Video lebih lebar dari target (16:9), paskan tinggi
         drawHeight = TARGET_HEIGHT;
         drawWidth = drawHeight * videoRatio;
-        x = (TARGET_WIDTH - drawWidth) / 2; // Center horizontal
+        x = (TARGET_WIDTH - drawWidth) / 2; // Geser horizontal ke tengah (memotong sisi)
     } else {
-        // Video lebih 'lebar' dari 16:9, paskan lebar, potong atas/bawah
+        // Video lebih tinggi dari target (16:9), paskan lebar
         drawWidth = TARGET_WIDTH;
         drawHeight = drawWidth / videoRatio;
-        y = (TARGET_HEIGHT - drawHeight) / 2; // Center vertical
+        y = (TARGET_HEIGHT - drawHeight) / 2; // Geser vertikal ke tengah (memotong atas/bawah)
     }
 
     // Gambar background (hitam)
@@ -130,7 +130,8 @@ function capturePhoto() {
     // Gambar Video: Menggunakan logika mirror
     context.save();
     context.scale(-1, 1);
-    context.drawImage(video, -drawWidth - x, y, drawWidth, drawHeight); // Gambar terbalik
+    // Draw video ke canvas, memastikan ia mengisi penuh area 16:9 (drawWidth dan drawHeight sudah dihitung untuk mengisi penuh)
+    context.drawImage(video, -drawWidth - x, y, drawWidth, drawHeight);
     context.restore();
 
     // 2. Gambar Frame Maskot di atasnya
