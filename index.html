@@ -22,7 +22,7 @@
     </a>
     <ul class="nav-links">
         <li><a href="#menu">Menu</a></li>
-        <li><a href="#story">Story</a></li>
+        <li><a href="#countdown">Promo</a></li> <li><a href="#story">Story</a></li>
         <li><a href="#store">Store</a></li>
     </ul>
     <button class="nav-btn" onclick="openOrderModal()">Order Now</button>
@@ -42,7 +42,7 @@
 <section id="menu" class="menu">
     <h2 class="section-title">Our <span>Menu</span></h2>
     
-    <h3 class="menu-category"></i> Signature Menu</h3>
+    <h3 class="menu-category"><i class="fas fa-star" style="color:gold;"></i> Signature Menu</h3>
     <div class="menu-grid">
         
         <div class="menu-card signature-card">
@@ -68,10 +68,10 @@
     <div style="margin-top: 60px; border-bottom: 2px dashed #ddd; width: 50%; margin-left: auto; margin-right: auto;"></div>
     <div style="margin-top: 40px;"></div>
 
-    <h3 class="menu-category">All Menu</h3>
+    <h3 class="menu-category">☕ All Menu</h3>
     <div class="menu-grid">
 
-         <div class="menu-card">
+        <div class="menu-card">
             <div class="menu-img-container">
                 <img src="img/menu-blackano.jpg" alt="Blackano">
             </div>
@@ -79,7 +79,7 @@
             <span class="price-tag">Rp 8.000</span>
         </div>
 
-         <div class="menu-card">
+        <div class="menu-card">
             <div class="menu-img-container">
                 <img src="img/menu-kopisusu.jpg" alt="Kopi Susu Octurnix">
             </div>
@@ -114,6 +114,31 @@
     </div>
 </section>
 
+<section id="countdown" class="promo-countdown">
+    <h2 class="section-title">New Menu <span>Coming Soon!</span></h2>
+    <p class="countdown-desc">Rasakan sensasi baru di awal tahun! **Americano Cranberry** akan hadir membawa kesegaran unik. Jangan lewatkan peluncuran resminya!</p>
+    
+    <div class="timer-container">
+        <div class="timer-box">
+            <span id="days" class="timer-value">00</span>
+            <span class="timer-label">Hari</span>
+        </div>
+        <div class="timer-box">
+            <span id="hours" class="timer-value">00</span>
+            <span class="timer-label">Jam</span>
+        </div>
+        <div class="timer-box">
+            <span id="minutes" class="timer-value">00</span>
+            <span class="timer-label">Menit</span>
+        </div>
+        <div class="timer-box">
+            <span id="seconds" class="timer-value">00</span>
+            <span class="timer-label">Detik</span>
+        </div>
+    </div>
+
+    <a href="#menu" class="cta-btn countdown-cta">Lihat Menu Lain</a>
+</section>
 <section id="story" class="story">
     <div class="story-img">
         <img src="img/mascot-story.png" alt="Octurnix Story">
