@@ -43,7 +43,11 @@ const downloadLink = document.getElementById('downloadLink');
 const loadingMessage = document.getElementById('loadingMessage');
 const errorMessage = document.getElementById('errorMessage');
 const frameImage = new Image();
-frameImage.src = 'img/frame-maskot.png'; // Load frame maskot
+
+// Asumsikan Frame PNG Anda adalah 16:9 (misal 1920x1080)
+const TARGET_WIDTH = 1920; 
+const TARGET_HEIGHT = 1080;
+frameImage.src = 'img/frame-maskot.png'; 
 
 let stream = null;
 
@@ -54,10 +58,13 @@ function startCamera() {
     photoboothContainer.style.display = 'block';
     captureBtn.style.display = 'block';
     photoResult.style.display = 'none';
-
-    // Mendapatkan akses ke kamera (preferensi: kamera depan/selfie)
+    
+    // Perubahan: Minta resolusi 16:9 atau setinggi mungkin
     navigator.mediaDevices.getUserMedia({ 
-        video: { facingMode: "user" } // 'user' = kamera depan, 'environment' = kamera belakang
+        video: { 
+            facingMode: "user", 
+            aspectRatio: { ideal: 16/9 }
+        }
     })
     .then(function(s) {
         stream = s;
@@ -65,9 +72,10 @@ function startCamera() {
         video.onloadedmetadata = function(e) {
             video.play();
             loadingMessage.style.display = 'none';
-            // Atur ukuran canvas sesuai resolusi video (untuk HD)
-            canvas.width = video.videoWidth || 1280; // Default HD
-            canvas.height = video.videoHeight || 960; // Default HD
+            
+            // Set canvas ke resolusi 16:9 HD yang konsisten
+            canvas.width = TARGET_WIDTH; 
+            canvas.height = TARGET_HEIGHT;
         };
     })
     .catch(function(err) {
@@ -94,20 +102,44 @@ function capturePhoto() {
     // 1. Gambar Video ke Canvas
     const context = canvas.getContext('2d');
     
-    // Untuk menghilangkan mirror (transform: scaleX(-1)) di video, kita gambar terbalik di canvas
+    // Dimensi Video
+    const videoWidth = video.videoWidth;
+    const videoHeight = video.videoHeight;
+    const videoRatio = videoWidth / videoHeight;
+    const targetRatio = TARGET_WIDTH / TARGET_HEIGHT;
+
+    let drawWidth, drawHeight, x = 0, y = 0;
+
+    // Hitung cara menggambar video agar mengisi canvas 16:9 tanpa merusak aspek video
+    if (videoRatio < targetRatio) {
+        // Video lebih 'tinggi' dari 16:9, paskan tinggi, potong samping
+        drawHeight = TARGET_HEIGHT;
+        drawWidth = drawHeight * videoRatio;
+        x = (TARGET_WIDTH - drawWidth) / 2; // Center horizontal
+    } else {
+        // Video lebih 'lebar' dari 16:9, paskan lebar, potong atas/bawah
+        drawWidth = TARGET_WIDTH;
+        drawHeight = drawWidth / videoRatio;
+        y = (TARGET_HEIGHT - drawHeight) / 2; // Center vertical
+    }
+
+    // Gambar background (hitam)
+    context.fillStyle = '#000000';
+    context.fillRect(0, 0, TARGET_WIDTH, TARGET_HEIGHT);
+
+    // Gambar Video: Menggunakan logika mirror
     context.save();
     context.scale(-1, 1);
-    context.drawImage(video, -canvas.width, 0, canvas.width, canvas.height);
+    context.drawImage(video, -drawWidth - x, y, drawWidth, drawHeight); // Gambar terbalik
     context.restore();
 
     // 2. Gambar Frame Maskot di atasnya
-    // Pastikan frameImage sudah terload sebelum digambar
     if (frameImage.complete) {
-        context.drawImage(frameImage, 0, 0, canvas.width, canvas.height);
+        // Gambar frame agar menutupi seluruh canvas 16:9
+        context.drawImage(frameImage, 0, 0, TARGET_WIDTH, TARGET_HEIGHT);
     }
 
     // 3. Konversi Canvas ke PNG HD
-    // Quality 1.0 (tinggi) untuk HD
     const dataUrl = canvas.toDataURL('image/png', 1.0); 
 
     // 4. Tampilkan Hasil

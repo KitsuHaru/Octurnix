@@ -126,8 +126,8 @@ section { padding: 100px 7% 60px; min-height: 80vh; }
 .camera-preview {
     position: relative;
     width: 100%;
-    /* Rasio aspek 4:3 */
-    padding-top: 75%; 
+    /* REVISI PENTING: Mengubah rasio dari 75% (4:3) menjadi 56.25% (16:9 Landscape) */
+    padding-top: 56.25%; 
 }
 #cameraStream {
     position: absolute;
