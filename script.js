@@ -1,38 +1,5 @@
-// Logic untuk Modal Order
+// --- DOM ELEMENTS & KONSTANTA ---
 const modal = document.getElementById('orderModal');
-
-function openOrderModal() {
-    modal.classList.add('active');
-}
-
-function closeOrderModal() {
-    modal.classList.remove('active');
-}
-
-// Tutup modal jika klik di luar area putih
-modal.addEventListener('click', function(e) {
-    if (e.target === modal) {
-        closeOrderModal();
-    }
-});
-
-// Smooth Scrolling untuk Navbar
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        
-        document.querySelector(targetId).scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-});
-
-// =========================================================
-// LOGIC PHOTOBOOTH BARU
-// =========================================================
-
 const video = document.getElementById('cameraStream');
 const canvas = document.getElementById('photoCanvas');
 const captureBtn = document.getElementById('captureBtn');
@@ -42,28 +9,63 @@ const finalPhoto = document.getElementById('finalPhoto');
 const downloadLink = document.getElementById('downloadLink');
 const loadingMessage = document.getElementById('loadingMessage');
 const errorMessage = document.getElementById('errorMessage');
-const frameImage = new Image();
 
-// Target resolusi final: Landscape HD 16:9 (1920x1080)
+// REVISI FINAL: Target resolusi final 16:10 (1920x1200)
 const TARGET_WIDTH = 1920; 
-const TARGET_HEIGHT = 1080;
+const TARGET_HEIGHT = 1200; 
+
+const frameImage = new Image();
 frameImage.src = 'img/frame-maskot.png'; 
 
 let stream = null;
+let frameLoaded = false;
+
+// --- FUNGSI MODAL & SCROLL ---
+
+function openOrderModal() { modal.classList.add('active'); }
+function closeOrderModal() { modal.classList.remove('active'); }
+modal.addEventListener('click', function(e) { if (e.target === modal) { closeOrderModal(); } });
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
+    });
+});
+
+
+// --- LOGIC PHOTOBOOTH UTAMA ---
+
+// PENTING: Pastikan frame sudah dimuat
+frameImage.onload = () => {
+    frameLoaded = true;
+    // Panggil startCamera setelah frame siap
+    startCamera(); 
+};
+frameImage.onerror = () => {
+    console.error("Gagal memuat frame-maskot.png. Memulai tanpa frame.");
+    frameLoaded = true;
+    startCamera();
+}
 
 // Fungsi untuk memulai kamera
 function startCamera() {
-    loadingMessage.style.display = 'block';
+    if (!frameLoaded) {
+        loadingMessage.style.display = 'block';
+        return; 
+    }
+    
     errorMessage.style.display = 'none';
     photoboothContainer.style.display = 'block';
     captureBtn.style.display = 'block';
     photoResult.style.display = 'none';
     
-    // Minta resolusi 16:9 atau setinggi mungkin
+    // Minta rasio 16:10
     navigator.mediaDevices.getUserMedia({ 
         video: { 
             facingMode: "user", 
-            aspectRatio: { ideal: 16/9 }
+            aspectRatio: { ideal: TARGET_WIDTH / TARGET_HEIGHT }
         }
     })
     .then(function(s) {
@@ -72,8 +74,6 @@ function startCamera() {
         video.onloadedmetadata = function(e) {
             video.play();
             loadingMessage.style.display = 'none';
-            
-            // Set canvas ke resolusi 16:9 HD yang konsisten
             canvas.width = TARGET_WIDTH; 
             canvas.height = TARGET_HEIGHT;
         };
@@ -97,11 +97,10 @@ function stopCamera() {
 
 // Fungsi untuk mengambil foto dan menambahkan frame
 function capturePhoto() {
-    if (!stream) return;
+    if (!stream || !frameLoaded) return;
 
     const context = canvas.getContext('2d');
     
-    // Dimensi Video dari perangkat
     const videoWidth = video.videoWidth;
     const videoHeight = video.videoHeight;
     const targetRatio = TARGET_WIDTH / TARGET_HEIGHT;
@@ -111,33 +110,32 @@ function capturePhoto() {
 
     // Perhitungan Cropping (object-fit: cover logic)
     if (videoRatio > targetRatio) {
-        // Video lebih lebar dari target, paskan tinggi, potong sisi kiri/kanan
+        // Video lebih lebar, paskan tinggi (fill height)
         drawHeight = TARGET_HEIGHT;
         drawWidth = drawHeight * videoRatio;
-        xOffset = (TARGET_WIDTH - drawWidth) / 2; // Hitung geseran X
+        xOffset = (TARGET_WIDTH - drawWidth) / 2;
     } else {
-        // Video lebih tinggi dari target, paskan lebar, potong atas/bawah
+        // Video lebih tinggi, paskan lebar (fill width)
         drawWidth = TARGET_WIDTH;
         drawHeight = drawWidth / videoRatio;
-        yOffset = (TARGET_HEIGHT - drawHeight) / 2; // Hitung geseran Y
+        yOffset = (TARGET_HEIGHT - drawHeight) / 2;
     }
+
+    // Gambar background (putih) sebelum drawing
+    context.fillStyle = '#FFFFFF';
+    context.fillRect(0, 0, TARGET_WIDTH, TARGET_HEIGHT);
 
     // 1. Gambar Video ke Canvas (Mirroring dan Drawing)
     context.save();
-    
-    // Terapkan mirror
     context.scale(-1, 1);
     
-    // Gambar video. Karena sudah di-mirror, posisi X harus negatif dan digeser kembali.
-    // X Drawing: (-drawWidth) + xOffset (untuk center)
-    // Y Drawing: yOffset
+    // Gambar video, pastikan mengisi penuh area (cover)
     context.drawImage(video, (-drawWidth - xOffset), yOffset, drawWidth, drawHeight);
 
     context.restore(); // Kembali ke konteks normal
 
     // 2. Gambar Frame Maskot di atasnya
-    if (frameImage.complete) {
-        // Gambar frame agar menutupi seluruh canvas 16:9 (tidak perlu di-mirror)
+    if (frameLoaded) {
         context.drawImage(frameImage, 0, 0, TARGET_WIDTH, TARGET_HEIGHT);
     }
 
@@ -157,8 +155,11 @@ function capturePhoto() {
 // Event listener untuk tombol "Ambil Foto"
 captureBtn.addEventListener('click', capturePhoto);
 
-// Otomatis memulai kamera saat Photobooth section terlihat (saat halaman dimuat)
-window.addEventListener('load', startCamera);
+// Panggil startCamera (logic frameImage.onload sudah menangani kapan harus mulai)
+window.addEventListener('load', () => {
+    if (!frameLoaded) {
+        startCamera();
+    }
+});
 
-// Optional: Hentikan kamera saat pengguna meninggalkan halaman
 window.addEventListener('beforeunload', stopCamera);

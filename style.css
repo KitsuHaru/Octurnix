@@ -126,8 +126,8 @@ section { padding: 100px 7% 60px; min-height: 80vh; }
 .camera-preview {
     position: relative;
     width: 100%;
-    /* Rasio 16:9 Landscape */
-    padding-top: 56.25%; 
+    /* REVISI FINAL: Rasio 16:10 Landscape (1200/1920 = 0.625) */
+    padding-top: 62.5%; 
 }
 #cameraStream {
     position: absolute;
@@ -145,7 +145,7 @@ section { padding: 100px 7% 60px; min-height: 80vh; }
     height: 100%;
     z-index: 5;
     pointer-events: none;
-    object-fit: contain; /* JANGAN UBAH INI JADI COVER */
+    object-fit: contain;
 }
 .capture-btn {
     width: 100%;
@@ -173,7 +173,6 @@ section { padding: 100px 7% 60px; min-height: 80vh; }
     border: 2px solid var(--fox-orange);
     border-radius: 20px;
     background: #FFF8F0;
-    /* REVISI: Tambahkan container untuk mengontrol rasio hasil foto */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -186,8 +185,8 @@ section { padding: 100px 7% 60px; min-height: 80vh; }
 .photo-result-container {
     width: 100%;
     position: relative;
-    /* Rasio 16:9 Landscape untuk display hasil */
-    padding-top: 56.25%; 
+    /* Rasio 16:10 Landscape untuk display hasil */
+    padding-top: 62.5%; 
     margin-bottom: 20px;
     overflow: hidden;
     border-radius: 10px;
