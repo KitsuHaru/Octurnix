@@ -103,110 +103,6 @@ section { padding: 100px 7% 60px; min-height: 80vh; }
     box-shadow: 0 3px 10px rgba(255, 143, 64, 0.3);
 }
 
-/* === PHOTOBOOTH STYLES === */
-.photobooth { 
-    background: var(--cream-bg); 
-    text-align: center; 
-    padding-bottom: 80px;
-}
-.photobooth-desc {
-    font-size: 1.1rem;
-    color: #666;
-    margin-bottom: 30px;
-}
-.photobooth-container {
-    max-width: 500px;
-    margin: 0 auto 30px;
-    position: relative;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    overflow: hidden;
-    background-color: #000;
-}
-.camera-preview {
-    position: relative;
-    width: 100%;
-    /* REVISI FINAL: Rasio 16:10 Landscape (1200/1920 = 0.625) */
-    padding-top: 62.5%; 
-}
-#cameraStream {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Penting agar video terisi penuh */
-    transform: scaleX(-1); /* Mirror view */
-    background-color: #333;
-}
-.frame-overlay {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 5;
-    pointer-events: none;
-    object-fit: contain;
-}
-.capture-btn {
-    width: 100%;
-    max-width: 500px;
-    margin-top: 20px;
-    padding: 15px 35px;
-    font-size: 1.5rem;
-}
-.try-again-btn {
-    background: var(--slate-blue);
-    margin-left: 10px;
-}
-.try-again-btn:hover {
-    background: var(--deep-navy);
-}
-.download-btn {
-    margin-right: 10px;
-}
-
-/* Area Hasil Foto */
-.photo-result {
-    max-width: 500px;
-    margin: 30px auto 0;
-    padding: 20px;
-    border: 2px solid var(--fox-orange);
-    border-radius: 20px;
-    background: #FFF8F0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.photo-result h3 {
-    margin-bottom: 15px;
-}
-
-.photo-result-container {
-    width: 100%;
-    position: relative;
-    /* Rasio 16:10 Landscape untuk display hasil */
-    padding-top: 62.5%; 
-    margin-bottom: 20px;
-    overflow: hidden;
-    border-radius: 10px;
-}
-
-.final-photo {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* PASTIKAN TAMPILAN TIDAK TERPOTONG */
-}
-
-
-.loading-message, .error-message {
-    font-size: 1.2rem;
-    color: var(--slate-blue);
-    margin-top: 20px;
-}
-
 /* STORY */
 .story { display: flex; align-items: center; gap: 50px; background: #FFF8F0; } 
 .story-content { flex: 1; }
@@ -258,5 +154,4 @@ footer { text-align: center; padding: 25px; background: var(--deep-navy); color:
     .hero-img img, .story-img img { width: 80%; }
     .nav-links { display: none; }
     .navbar { justify-content: space-between; }
-    .photobooth { min-height: 0; }
 }
