@@ -99,44 +99,45 @@ function stopCamera() {
 function capturePhoto() {
     if (!stream) return;
 
-    // 1. Gambar Video ke Canvas
     const context = canvas.getContext('2d');
     
     // Dimensi Video dari perangkat
     const videoWidth = video.videoWidth;
     const videoHeight = video.videoHeight;
-    const videoRatio = videoWidth / videoHeight;
     const targetRatio = TARGET_WIDTH / TARGET_HEIGHT;
+    const videoRatio = videoWidth / videoHeight;
 
-    let drawWidth, drawHeight, x = 0, y = 0;
+    let drawWidth, drawHeight, xOffset = 0, yOffset = 0;
 
-    // REVISI: Hitung cara menggambar video agar memenuhi target 16:9 (Crop-to-fill, seperti object-fit: cover)
+    // Perhitungan Cropping (object-fit: cover logic)
     if (videoRatio > targetRatio) {
-        // Video lebih lebar dari target (16:9), paskan tinggi
+        // Video lebih lebar dari target, paskan tinggi, potong sisi kiri/kanan
         drawHeight = TARGET_HEIGHT;
         drawWidth = drawHeight * videoRatio;
-        x = (TARGET_WIDTH - drawWidth) / 2; // Geser horizontal ke tengah (memotong sisi)
+        xOffset = (TARGET_WIDTH - drawWidth) / 2; // Hitung geseran X
     } else {
-        // Video lebih tinggi dari target (16:9), paskan lebar
+        // Video lebih tinggi dari target, paskan lebar, potong atas/bawah
         drawWidth = TARGET_WIDTH;
         drawHeight = drawWidth / videoRatio;
-        y = (TARGET_HEIGHT - drawHeight) / 2; // Geser vertikal ke tengah (memotong atas/bawah)
+        yOffset = (TARGET_HEIGHT - drawHeight) / 2; // Hitung geseran Y
     }
 
-    // Gambar background (hitam)
-    context.fillStyle = '#000000';
-    context.fillRect(0, 0, TARGET_WIDTH, TARGET_HEIGHT);
-
-    // Gambar Video: Menggunakan logika mirror
+    // 1. Gambar Video ke Canvas (Mirroring dan Drawing)
     context.save();
+    
+    // Terapkan mirror
     context.scale(-1, 1);
-    // Draw video ke canvas, memastikan ia mengisi penuh area 16:9 (drawWidth dan drawHeight sudah dihitung untuk mengisi penuh)
-    context.drawImage(video, -drawWidth - x, y, drawWidth, drawHeight);
-    context.restore();
+    
+    // Gambar video. Karena sudah di-mirror, posisi X harus negatif dan digeser kembali.
+    // X Drawing: (-drawWidth) + xOffset (untuk center)
+    // Y Drawing: yOffset
+    context.drawImage(video, (-drawWidth - xOffset), yOffset, drawWidth, drawHeight);
+
+    context.restore(); // Kembali ke konteks normal
 
     // 2. Gambar Frame Maskot di atasnya
     if (frameImage.complete) {
-        // Gambar frame agar menutupi seluruh canvas 16:9
+        // Gambar frame agar menutupi seluruh canvas 16:9 (tidak perlu di-mirror)
         context.drawImage(frameImage, 0, 0, TARGET_WIDTH, TARGET_HEIGHT);
     }
 
