@@ -8,7 +8,13 @@
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: var(--cream-bg); color: var(--deep-navy); font-family: "Quicksand", sans-serif; scroll-behavior: smooth; }
+body { 
+    background: var(--cream-bg); 
+    color: var(--deep-navy); 
+    font-family: "Quicksand", sans-serif; 
+    scroll-behavior: smooth; 
+    overflow-x: hidden; /* Tambahan agar animasi AOS tidak membuat scroll horizontal muncul */
+}
 
 /* TYPOGRAPHY */
 h1, h2, h3, .brand, .nav-btn, .cta-btn, .section-title, .price-tag, .menu-category {
@@ -62,7 +68,6 @@ section { padding: 100px 7% 60px; min-height: 80vh; }
 .menu { background: var(--white); }
 .menu-grid { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
 
-/* Judul Kategori Menu (Signature / All) */
 .menu-category {
     text-align: center;
     font-size: 2rem;
@@ -80,22 +85,19 @@ section { padding: 100px 7% 60px; min-height: 80vh; }
 .menu-card h3 { color: var(--slate-blue); font-size: 1.3rem; margin-bottom: 5px; margin-top: 15px; }
 .menu-card p { font-size: 0.9rem; color: #666; margin-bottom: 10px; }
 
-/* Highlight khusus Signature Card */
 .signature-card {
-    border: 2px solid var(--fox-orange); /* Border oranye */
-    background: #FFF8F0; /* Background agak oranye muda */
-    transform: scale(1.05); /* Sedikit lebih besar */
+    border: 2px solid var(--fox-orange);
+    background: #FFF8F0;
+    transform: scale(1.05);
 }
 .signature-card:hover { transform: scale(1.05) translateY(-10px); }
 
-/* MENU IMAGES */
 .menu-img-container {
     width: 100%; height: 160px; overflow: hidden; border-radius: 15px; background: #eee;
 }
 .menu-img-container img { width: 100%; height: 100%; object-fit: cover; transition: 0.3s; }
 .menu-card:hover .menu-img-container img { transform: scale(1.1); }
 
-/* PRICE TAG */
 .price-tag {
     display: inline-block; margin-top: auto; padding: 5px 15px;
     background-color: var(--fox-orange); color: white;
@@ -148,10 +150,68 @@ section { padding: 100px 7% 60px; min-height: 80vh; }
 /* FOOTER */
 footer { text-align: center; padding: 25px; background: var(--deep-navy); color: var(--cream-bg); margin-top: 0; }
 
+/* --- UPDATE: WHATSAPP FAB --- */
+.whatsapp-fab {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 60px;
+  height: 60px;
+  background-color: #25d366;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  z-index: 1000;
+  font-size: 32px;
+  text-decoration: none;
+  animation: pulse-wa 2s infinite;
+  transition: transform 0.3s ease;
+}
+
+.whatsapp-fab:hover {
+  transform: scale(1.1);
+  color: white;
+}
+
+.whatsapp-fab .tooltip-text {
+  visibility: hidden;
+  position: absolute;
+  right: 75px;
+  background-color: var(--deep-navy); /* Menggunakan warna navy Anda */
+  color: var(--white);
+  padding: 8px 15px;
+  border-radius: 8px;
+  font-size: 14px;
+  white-space: nowrap;
+  font-family: 'Quicksand', sans-serif;
+  border-left: 3px solid var(--fox-orange); /* Aksen oranye rubah */
+}
+
+.whatsapp-fab:hover .tooltip-text {
+  visibility: visible;
+}
+
+@keyframes pulse-wa {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
 /* RESPONSIVE */
 @media (max-width: 768px) {
     .hero, .story { flex-direction: column; text-align: center; gap: 40px; }
     .hero-img img, .story-img img { width: 80%; }
     .nav-links { display: none; }
     .navbar { justify-content: space-between; }
+    
+    .whatsapp-fab {
+        bottom: 20px;
+        right: 20px;
+        width: 55px;
+        height: 55px;
+        font-size: 28px;
+    }
 }
