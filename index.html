@@ -3,18 +3,22 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>OCTURN!X COFFEE</title>
+<title>OCTURN!X COFFEE — Neo Midnight Experience</title>
 
+<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+<!-- FontAwesome & GSAP -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
+<!-- tsParticles -->
 <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
 
+<!-- Styles -->
 <link rel="stylesheet" href="style.css">
 </head>
 
@@ -23,6 +27,7 @@
 <div class="blur-light blur-1"></div>
 <div class="blur-light blur-2"></div>
 
+<!-- NAVBAR -->
 <nav class="navbar">
   <a href="javascript:void(0)" onclick="scrollToSection('home')" class="logo">
     <img src="assets/logo.png" alt="Octurnix Logo" class="nav-logo-img" onerror="this.style.display='none';">
@@ -37,6 +42,7 @@
   <button onclick="scrollToSection('menu')" class="nav-btn magnetic">Order Now</button>
 </nav>
 
+<!-- HERO -->
 <section class="hero" id="home">
   <div class="container hero-grid">
     <div>
@@ -59,6 +65,7 @@
   </div>
 </section>
 
+<!-- MENU -->
 <section id="menu">
   <div class="container">
     <div class="section-title">
@@ -66,6 +73,7 @@
       <p>Every drink inside Octurn!X is crafted for a different night mood.</p>
     </div>
 
+    <!-- COFFEE (6 ITEMS) -->
     <div class="category">
       <div class="category-head">
         <div class="line"></div>
@@ -74,6 +82,7 @@
       </div>
       <div class="menu-grid">
         
+        <!-- COFFEE 1 -->
         <div class="menu-card">
           <img src="assets/blackano.jpg" alt="Blackano" onerror="this.src='https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=600';">
           <div class="menu-content">
@@ -88,6 +97,7 @@
           </div>
         </div>
 
+        <!-- COFFEE 2 -->
         <div class="menu-card">
           <img src="assets/aren-latte.jpg" alt="Aren Latte" onerror="this.src='https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=600';">
           <div class="menu-content">
@@ -95,13 +105,14 @@
               <h4>Aren Latte</h4>
               <div class="price">15K</div>
             </div>
-            <p class="desc">Smooth coffee blended with creamy milk and rich palm sugar for a sweet, comforting taste.</p>
+            <p class="desc">Smooth coffee blended with creamy milk and rich palm sugar.</p>
             <div class="card-buttons">
               <button class="add-cart" onclick="addToCart('Aren Latte', 15000)">Add To Cart</button>
             </div>
           </div>
         </div>
 
+        <!-- COFFEE 3 -->
         <div class="menu-card">
           <img src="assets/octurnix-latte.jpg" alt="Octurnix Latte" onerror="this.src='https://images.unsplash.com/photo-1512568400610-62da28bc8a13?q=80&w=600';">
           <div class="menu-content">
@@ -116,6 +127,7 @@
           </div>
         </div>
 
+        <!-- COFFEE 4 -->
         <div class="menu-card">
           <img src="assets/himalayan.jpg" alt="Himalayan Caramel" onerror="this.src='https://images.unsplash.com/photo-1572442388796-11668a67ef84?q=80&w=600';">
           <div class="menu-content">
@@ -130,6 +142,7 @@
           </div>
         </div>
  
+        <!-- COFFEE 5 -->
         <div class="menu-card">
           <img src="assets/butterscotch-himalaya-latte.jpg" alt="Butterscotch Himalaya Latte" onerror="this.src='https://images.unsplash.com/photo-1579992357154-faf4bde95b3d?q=80&w=600';">
           <div class="menu-content">
@@ -144,6 +157,7 @@
           </div>
         </div>
 
+        <!-- COFFEE 6 -->
         <div class="menu-card">
           <img src="assets/oreo-latte.jpg" alt="Oreo Latte" onerror="this.src='https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=600';">
           <div class="menu-content">
@@ -161,6 +175,7 @@
       </div>
     </div>
 
+    <!-- NON COFFEE (6 ITEMS) -->
     <div class="category">
       <div class="category-head">
         <div class="line"></div>
@@ -169,6 +184,7 @@
       </div>
       <div class="menu-grid">
         
+        <!-- NON-COFFEE 1 -->
         <div class="menu-card">
           <img src="assets/matcha.jpg" alt="Oatside Matcha Latte" onerror="this.src='https://images.unsplash.com/photo-1515823064-d6e0c04616a7?q=80&w=600';">
           <div class="menu-content">
@@ -183,6 +199,7 @@
           </div>
         </div>
 
+        <!-- NON-COFFEE 2 -->
         <div class="menu-card">
           <img src="assets/oreo-matcha.jpg" alt="Outside Oreo Matcha" onerror="this.src='https://images.unsplash.com/photo-1514996937319-344454492b37?q=80&w=600';">
           <div class="menu-content">
@@ -197,6 +214,7 @@
           </div>
         </div>
 
+        <!-- NON-COFFEE 3 -->
         <div class="menu-card">
           <img src="assets/milosaurus.jpg" alt="Milosaurus" onerror="this.src='https://images.unsplash.com/photo-1621263764928-df1444c5e859?q=80&w=600';">
           <div class="menu-content">
@@ -204,13 +222,14 @@
               <h4>Milosaurus</h4>
               <div class="price">18K</div>
             </div>
-            <p class="desc">Rich Milo from Malaysia blended with creamy milk, topped with Milo powder.S</p>
+            <p class="desc">Rich Milo from Malaysia blended with creamy milk, topped with Milo powder.</p>
             <div class="card-buttons">
-              <button class="add-cart" onclick="addToCart('Miloaurus', 18000)">Add To Cart</button>
+              <button class="add-cart" onclick="addToCart('Milosaurus', 18000)">Add To Cart</button>
             </div>
           </div>
         </div>
 
+        <!-- NON-COFFEE 4 -->
         <div class="menu-card">
           <img src="assets/golden-mango.jpg" alt="Golden Mango Bliss" onerror="this.src='https://images.unsplash.com/photo-1557006021-b85faa2bc5e2?q=80&w=600';">
           <div class="menu-content">
@@ -225,6 +244,7 @@
           </div>
         </div>
 
+        <!-- NON-COFFEE 5 -->
         <div class="menu-card">
           <img src="assets/strawberry-kiss.jpg" alt="Strawberry Kiss" onerror="this.src='https://images.unsplash.com/photo-1579888944880-d98341245702?q=80&w=600';">
           <div class="menu-content">
@@ -239,6 +259,7 @@
           </div>
         </div>
 
+        <!-- NON-COFFEE 6 -->
         <div class="menu-card">
           <img src="assets/citrus.jpg" alt="Citrus Sunburst" onerror="this.src='https://images.unsplash.com/photo-1576092768241-dec231879fc3?q=80&w=600';">
           <div class="menu-content">
@@ -258,6 +279,7 @@
   </div>
 </section>
 
+<!-- STORY -->
 <section id="story">
   <div class="container story-grid">
     <div class="story-image">
@@ -272,6 +294,7 @@
   </div>
 </section>
 
+<!-- STORE -->
 <section id="store">
   <div class="container">
     <div class="section-title">
@@ -281,6 +304,7 @@
     
     <div class="store-grid">
       
+      <!-- LOKASI -->
       <div class="store-card" data-aos="fade-up">
         <i class="fas fa-map-marker-alt" style="font-size: 2rem; color: var(--orange); margin-bottom: 20px;"></i>
         <h3>Main Store</h3>
@@ -295,6 +319,7 @@
         </div>
       </div>
 
+      <!-- TRANSPORTASI -->
       <div class="store-card" data-aos="fade-up" data-aos-delay="100">
         <i class="fas fa-route" style="font-size: 2rem; color: var(--orange); margin-bottom: 20px;"></i>
         <h3>Akses Transportasi</h3>
@@ -311,6 +336,7 @@
         </div>
       </div>
 
+      <!-- JADWAL BUKA & SOCIAL -->
       <div class="store-card" data-aos="fade-up" data-aos-delay="200">
         <i class="fas fa-clock" style="font-size: 2rem; color: var(--orange); margin-bottom: 20px;"></i>
         <h3>Social & Jam Buka</h3>
@@ -344,14 +370,16 @@
 </section>
 
 <footer>
-  © 2025 OCTURN!X COFFEE
+  © 2026 OCTURN!X COFFEE
 </footer>
 
+<!-- CART BUTTON -->
 <div class="cart-button" onclick="toggleCart()">
   <i class="fas fa-shopping-cart"></i>
   <div class="cart-count" id="cartCount">0</div>
 </div>
 
+<!-- CART PANEL -->
 <div class="cart-panel" id="cartPanel">
   <div class="cart-header">
     <h2>Your Cart</h2>
@@ -364,6 +392,7 @@
   </div>
 </div>
 
+<!-- PAYMENT MODAL -->
 <div class="payment-modal" id="paymentModal">
   <div class="payment-box">
     <h2>Complete Order</h2>
@@ -372,13 +401,15 @@
       <input type="text" id="customerName" placeholder="Your Name" required/>
       <textarea id="customerNote" placeholder="Notes (Optional)..."></textarea>
     </div>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/QR_Code_Example.png" alt="QRIS Code">
+    <!-- QRIS IMAGE DIRECTED TO ASSETS -->
+    <img src="assets/qris.png" alt="QRIS Code" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/a/a2/QR_Code_Example.png';">
     <div id="paymentTotal"></div>
     <button onclick="sendWhatsAppOrder()">I've Paid & Send Order</button>
     <button onclick="closePayment()" class="cancel-btn">Cancel</button>
   </div>
 </div>
 
+<!-- Scripts -->
 <script src="script.js"></script>
 </body>
 </html>
