@@ -1,200 +1,384 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Octurnix Coffee</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>OCTURN!X COFFEE — Neo Midnight Experience</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
-    <link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+<div id="particles"></div>
+<div class="blur-light blur-1"></div>
+<div class="blur-light blur-2"></div>
 
 <nav class="navbar">
-    <a href="javascript:void(0)" onclick="scrollToSection('home')" class="logo">
-        <img src="img/logo.png" alt="Octurnix Logo"> 
-        <span class="brand"><span class="blue">OCTURN</span><span class="orange">!X</span></span>
-    </a>
-    <ul class="nav-links">
-        <li><a href="javascript:void(0)" onclick="scrollToSection('menu')">Menu</a></li>
-        <li><a href="javascript:void(0)" onclick="scrollToSection('story')">Story</a></li>
-        <li><a href="javascript:void(0)" onclick="scrollToSection('store')">Store</a></li>
-    </ul>
-    <button class="nav-btn" onclick="openOrderModal()">Order Now</button>
+  <a href="javascript:void(0)" onclick="scrollToSection('home')" class="logo">
+    <img src="assets/logo.png" alt="Octurnix Logo" class="nav-logo-img" onerror="this.style.display='none';">
+    <span class="brand">OCTURN<span class="orange">!X</span></span>
+  </a>
+  <div class="nav-links">
+    <a onclick="scrollToSection('home')">Home</a>
+    <a onclick="scrollToSection('menu')">Menu</a>
+    <a onclick="scrollToSection('story')">Story</a>
+    <a onclick="scrollToSection('store')">Store</a>
+  </div>
+  <button onclick="scrollToSection('menu')" class="nav-btn magnetic">Order Now</button>
 </nav>
 
 <section class="hero" id="home">
-    <div class="hero-text" data-aos="fade-up">
-        <h1>Teman Setia<br>di Kala <span>Malam.</span></h1>
-        <p>Rasakan kehangatan dari racikan kopi otentik. Ditemani sang rubah malam, setiap tegukan Octurn!X membangkitkan inspirasimu.</p>
-        <a href="javascript:void(0)" onclick="scrollToSection('menu')" class="cta-btn">Lihat Menu</a>
+  <div class="container hero-grid">
+    <div>
+      <div class="hero-tag"><i class="fas fa-moon"></i> Midnight Coffee Experience</div>
+      <h1>Crafted For <br><span>The Night Thinkers.</span></h1>
+      <p>Premium midnight coffee engineered for creators, dreamers, coders, artists, gamers, and night minds who build ideas while the city sleeps.</p>
+      
+      <div class="hero-buttons">
+        <button onclick="scrollToSection('menu')" class="btn btn-primary magnetic">Explore Menu</button>
+        <a href="assets/menu.pdf" download="Octurnix_Menu.pdf" class="btn btn-secondary magnetic" style="display: inline-flex; align-items: center; justify-content: center;">
+            Download Menu PDF
+        </a>
+      </div>
     </div>
-    <div class="hero-img" data-aos="zoom-in" data-aos-delay="200">
-        <img src="img/mascot.png" alt="Octurnix Mascot Fox">
-    </div>
-</section>
-
-<section id="menu" class="menu">
-    <h2 class="section-title" data-aos="fade-down">Our <span>Menu</span></h2>
     
-    <h3 class="menu-category" data-aos="fade-right">Signature Menu</h3>
-    <div class="menu-grid">
+    <div class="hero-visual">
+      <div class="hero-circle"></div>
+      <img class="hero-img" src="assets/cup-hero.png" alt="Octurnix Hero Cup" onerror="this.style.display='none';">
+    </div>
+  </div>
+</section>
+
+<section id="menu">
+  <div class="container">
+    <div class="section-title">
+      <h2>Midnight Menu</h2>
+      <p>Every drink inside Octurn!X is crafted for a different night mood.</p>
+    </div>
+
+    <div class="category">
+      <div class="category-head">
+        <div class="line"></div>
+        <h3>Coffee</h3>
+        <div class="line"></div>
+      </div>
+      <div class="menu-grid">
         
-        <div class="menu-card signature-card" data-aos="fade-up" data-aos-delay="100">
-            <div class="menu-img-container">
-                <img src="img/menu-kopisusu.jpg" alt="Kopi Susu Octurnix">
+        <div class="menu-card">
+          <img src="assets/blackano.jpg" alt="Blackano" onerror="this.src='https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=600';">
+          <div class="menu-content">
+            <div class="menu-top">
+              <h4>Blackano</h4>
+              <div class="price">10K</div>
             </div>
-            <h3>Kopi Susu Octurnix</h3>
-            <p>Signature blend dengan sentuhan susu creamy dan aroma khas.</p>
-            <span class="price-tag">Rp 8.000</span>
+            <p class="desc">A smooth and bold Americano with a subtle hint of sweetness.</p>
+            <div class="card-buttons">
+              <button class="add-cart" onclick="addToCart('Blackano', 10000)">Add To Cart</button>
+            </div>
+          </div>
         </div>
 
-        <div class="menu-card signature-card" data-aos="fade-up" data-aos-delay="300">
-            <div class="menu-img-container">
-                <img src="img/menu-matcha.jpg" alt="Matcha Latte">
+        <div class="menu-card">
+          <img src="assets/aren-latte.jpg" alt="Aren Latte" onerror="this.src='https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=600';">
+          <div class="menu-content">
+            <div class="menu-top">
+              <h4>Aren Latte</h4>
+              <div class="price">15K</div>
             </div>
-            <h3>Matcha Latte</h3>
-            <p>Matcha premium yang earthy dipadukan susu lembut.</p>
-            <span class="price-tag">Rp 12.000</span>
+            <p class="desc">Smooth coffee blended with creamy milk and rich palm sugar for a sweet, comforting taste.</p>
+            <div class="card-buttons">
+              <button class="add-cart" onclick="addToCart('Aren Latte', 15000)">Add To Cart</button>
+            </div>
+          </div>
         </div>
 
+        <div class="menu-card">
+          <img src="assets/octurnix-latte.jpg" alt="Octurnix Latte" onerror="this.src='https://images.unsplash.com/photo-1512568400610-62da28bc8a13?q=80&w=600';">
+          <div class="menu-content">
+            <div class="menu-top">
+              <h4>Octurnix Latte</h4>
+              <div class="price">15K</div>
+            </div>
+            <p class="desc">Rich coffee combined with vanilla-infused milk for a soft, sweet aroma.</p>
+            <div class="card-buttons">
+              <button class="add-cart" onclick="addToCart('Octurnix Latte', 15000)">Add To Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-card">
+          <img src="assets/himalayan.jpg" alt="Himalayan Caramel" onerror="this.src='https://images.unsplash.com/photo-1572442388796-11668a67ef84?q=80&w=600';">
+          <div class="menu-content">
+            <div class="menu-top">
+              <h4>Himalayan Caramel</h4>
+              <div class="price">20K</div>
+            </div>
+            <p class="desc">Creamy oat milk with rich caramel and a touch of Himalayan salt.</p>
+            <div class="card-buttons">
+              <button class="add-cart" onclick="addToCart('Himalayan Caramel', 20000)">Add To Cart</button>
+            </div>
+          </div>
+        </div>
+ 
+        <div class="menu-card">
+          <img src="assets/butterscotch-himalaya-latte.jpg" alt="Butterscotch Himalaya Latte" onerror="this.src='https://images.unsplash.com/photo-1579992357154-faf4bde95b3d?q=80&w=600';">
+          <div class="menu-content">
+            <div class="menu-top">
+              <h4>Butterscotch Himalaya Latte</h4>
+              <div class="price">23K</div>
+            </div>
+            <p class="desc">Rich butterscotch with creamy milk, topped with Himalayan whipped cream and caramel crumble.</p>
+            <div class="card-buttons">
+              <button class="add-cart" onclick="addToCart('Butterscotch Himalaya Latte', 23000)">Add To Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-card">
+          <img src="assets/oreo-latte.jpg" alt="Oreo Latte" onerror="this.src='https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=600';">
+          <div class="menu-content">
+            <div class="menu-top">
+              <h4>Oreo Latte</h4>
+              <div class="price">20K</div>
+            </div>
+            <p class="desc">Creamy milk coffee blended with Oreo crumbs.</p>
+            <div class="card-buttons">
+              <button class="add-cart" onclick="addToCart('Oreo Latte', 20000)">Add To Cart</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
 
-    <div style="margin-top: 60px; border-bottom: 2px dashed #ddd; width: 50%; margin-left: auto; margin-right: auto;"></div>
-    <div style="margin-top: 40px;"></div>
-
-    <h3 class="menu-category" data-aos="fade-right">All Menu</h3>
-    <div class="menu-grid">
-
-         <div class="menu-card" data-aos="flip-left" data-aos-delay="100">
-            <div class="menu-img-container">
-                <img src="img/menu-blackano.jpg" alt="Blackano">
+    <div class="category">
+      <div class="category-head">
+        <div class="line"></div>
+        <h3>Non Coffee</h3>
+        <div class="line"></div>
+      </div>
+      <div class="menu-grid">
+        
+        <div class="menu-card">
+          <img src="assets/matcha.jpg" alt="Oatside Matcha Latte" onerror="this.src='https://images.unsplash.com/photo-1515823064-d6e0c04616a7?q=80&w=600';">
+          <div class="menu-content">
+            <div class="menu-top">
+              <h4>Oatside Matcha Latte</h4>
+              <div class="price">25K</div>
             </div>
-            <h3>Blackano</h3>
-            <span class="price-tag">Rp 8.000</span>
+            <p class="desc">Premium pure matcha blended with creamy oat milk.</p>
+            <div class="card-buttons">
+              <button class="add-cart" onclick="addToCart('Oatside Matcha Latte', 25000)">Add To Cart</button>
+            </div>
+          </div>
         </div>
 
-         <div class="menu-card" data-aos="flip-left" data-aos-delay="200">
-            <div class="menu-img-container">
-                <img src="img/menu-kopisusu.jpg" alt="Kopi Susu Octurnix">
+        <div class="menu-card">
+          <img src="assets/oreo-matcha.jpg" alt="Outside Oreo Matcha" onerror="this.src='https://images.unsplash.com/photo-1514996937319-344454492b37?q=80&w=600';">
+          <div class="menu-content">
+            <div class="menu-top">
+              <h4>Outside Oreo Matcha</h4>
+              <div class="price">27K</div>
             </div>
-            <h3>Kopi Susu Octurnix</h3>
-            <span class="price-tag">Rp 8.000</span>
+            <p class="desc">Pure matcha blended with creamy oat milk and Oreo crumbs.</p>
+            <div class="card-buttons">
+              <button class="add-cart" onclick="addToCart('Outside Oreo Matcha', 27000)">Add To Cart</button>
+            </div>
+          </div>
         </div>
 
-        <div class="menu-card" data-aos="flip-left" data-aos-delay="300">
-            <div class="menu-img-container">
-                <img src="img/menu-milo.jpg" alt="Milosourus">
+        <div class="menu-card">
+          <img src="assets/milosaurus.jpg" alt="Milosaurus" onerror="this.src='https://images.unsplash.com/photo-1621263764928-df1444c5e859?q=80&w=600';">
+          <div class="menu-content">
+            <div class="menu-top">
+              <h4>Milosaurus</h4>
+              <div class="price">18K</div>
             </div>
-            <h3>Milosourus</h3>
-            <span class="price-tag">Rp 10.000</span>
+            <p class="desc">Rich Milo from Malaysia blended with creamy milk, topped with Milo powder.S</p>
+            <div class="card-buttons">
+              <button class="add-cart" onclick="addToCart('Miloaurus', 18000)">Add To Cart</button>
+            </div>
+          </div>
         </div>
 
-        <div class="menu-card" data-aos="flip-left" data-aos-delay="400">
-            <div class="menu-img-container">
-                <img src="img/menu-matcha.jpg" alt="Matcha Latte">
+        <div class="menu-card">
+          <img src="assets/golden-mango.jpg" alt="Golden Mango Bliss" onerror="this.src='https://images.unsplash.com/photo-1557006021-b85faa2bc5e2?q=80&w=600';">
+          <div class="menu-content">
+            <div class="menu-top">
+              <h4>Golden Mango Bliss</h4>
+              <div class="price">15K</div>
             </div>
-            <h3>Matcha Latte</h3>
-            <span class="price-tag">Rp 12.000</span>
+            <p class="desc">Sweet golden mango blended with a touch of milky.</p>
+            <div class="card-buttons">
+              <button class="add-cart" onclick="addToCart('Golden Mango Bliss', 15000)">Add To Cart</button>
+            </div>
+          </div>
         </div>
 
-        <div class="menu-card" data-aos="flip-left" data-aos-delay="500">
-            <div class="menu-img-container">
-                <img src="img/menu-himalayan.jpg" alt="Himalayan Caramel">
+        <div class="menu-card">
+          <img src="assets/strawberry-kiss.jpg" alt="Strawberry Kiss" onerror="this.src='https://images.unsplash.com/photo-1579888944880-d98341245702?q=80&w=600';">
+          <div class="menu-content">
+            <div class="menu-top">
+              <h4>Strawberry Kiss</h4>
+              <div class="price">15K</div>
             </div>
-            <h3>Himalayan Caramel Latte</h3>
-            <span class="price-tag">Rp 12.000</span>
+            <p class="desc">Fresh strawberry blended with a touch of milky.</p>
+            <div class="card-buttons">
+              <button class="add-cart" onclick="addToCart('Strawberry Kiss', 15000)">Add To Cart</button>
+            </div>
+          </div>
         </div>
 
+        <div class="menu-card">
+          <img src="assets/citrus.jpg" alt="Citrus Sunburst" onerror="this.src='https://images.unsplash.com/photo-1576092768241-dec231879fc3?q=80&w=600';">
+          <div class="menu-content">
+            <div class="menu-top">
+              <h4>Citrus Sunburst</h4>
+              <div class="price">12K</div>
+            </div>
+            <p class="desc">Refreshing orange soda with a smooth milky hint.</p>
+            <div class="card-buttons">
+              <button class="add-cart" onclick="addToCart('Citrus Sunburst', 12000)">Add To Cart</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
+  </div>
 </section>
 
-<section id="story" class="story">
-    <div class="story-img" data-aos="fade-right">
-        <img src="img/mascot-story.png" alt="Octurnix Story">
+<section id="story">
+  <div class="container story-grid">
+    <div class="story-image">
+      <img src="assets/story-fox.jpg" alt="Fox of the Night" onerror="this.src='https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=800';">
     </div>
-    <div class="story-content" data-aos="fade-left">
-        <h2 class="section-title" style="text-align: left;">The <span>Story</span></h2>
-        <h3>Kenapa Rubah Malam?</h3>
-        <p>
-            Octurn!X lahir dari keresahan para pejuang malam. Kami percaya bahwa ide-ide cemerlang sering muncul ketika matahari terbenam. 
-        </p>
-        <p>
-            Seperti rubah yang tangkas di malam hari, kopi kami diracik untuk menjaga fokusmu tetap tajam namun hati tetap hangat. Kami bukan sekadar kedai kopi, kami adalah teman setiamu dalam keheningan malam.
-        </p>
+    <div class="story-content">
+      <h2>The Fox Of The Night</h2>
+      <p>Octurn!X was created for people who feel most alive after dark.</p>
+      <p>The fox symbolizes intelligence, adaptability, instinct, and movement through darkness with elegance.</p>
+      <p>This is not simply coffee. This is fuel for creators, gamers, coders, students, and unfinished midnight ideas.</p>
     </div>
+  </div>
 </section>
 
-<section id="store" class="store" data-aos="fade-up">
-    <h2 class="section-title">Find Our <span>Store</span></h2>
-    <div class="store-details">
-        <div class="info-box" data-aos="zoom-in" data-aos-delay="100">
-            <i class="fas fa-map-marker-alt"></i>
-            <h4>Lokasi Utama</h4>
-            <p>Jl. Harapan Indah Boulevard No.2<br>Pusaka Rakyat, Kec. Tarumajaya, Kabupaten Bekasi</p><p>Jawa Barat 17214</p>
-        </div>
-        <div class="info-box" data-aos="zoom-in" data-aos-delay="200">
-            <i class="fas fa-clock"></i>
-            <h4>Jam Operasional</h4>
-            <p>Senin - Minggu<br>16.00 - 00.00 WIB</p>
-        </div>
-        <div class="info-box" data-aos="zoom-in" data-aos-delay="300">
-            <i class="fas fa-phone-alt"></i>
-            <h4>Contact & Social</h4>
-            <p>
-                +62 857-7006-9187<br>
-                <a href="https://www.instagram.com/octurnix/" target="_blank" class="social-link">
-                    <i class="fab fa-instagram"></i> @octurnix
-                </a>
-            </p>
-        </div>
+<section id="store">
+  <div class="container">
+    <div class="section-title">
+      <h2>Enter The <span>Midnight Sanctuary</span></h2>
+      <p>Kunjungi ruang kreatif kami atau hubungi kami melalui platform digital favoritmu.</p>
     </div>
+    
+    <div class="store-grid">
+      
+      <div class="store-card" data-aos="fade-up">
+        <i class="fas fa-map-marker-alt" style="font-size: 2rem; color: var(--orange); margin-bottom: 20px;"></i>
+        <h3>Main Store</h3>
+        <p style="margin-top: 10px; line-height: 1.8;">
+          <strong>Jl. Raya Lenteng Agung No. 1, Jagakarsa</strong><br>
+          Jakarta Selatan.
+        </p>
+        <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.95rem; text-align: left;">
+          <p style="margin-bottom: 6px;"><i class="fas fa-school" style="color: var(--orange); width: 20px;"></i> Samping SMP 98 / SMA 38 / MAN 13</p>
+          <p style="margin-bottom: 6px;"><i class="fas fa-graduation-cap" style="color: var(--orange); width: 20px;"></i> Seberang SD Nurul Iman</p>
+          <p><i class="fas fa-store" style="color: #25D366; width: 20px;"></i> Tepat bersebelahan dengan <strong>INDOMARET</strong></p>
+        </div>
+      </div>
+
+      <div class="store-card" data-aos="fade-up" data-aos-delay="100">
+        <i class="fas fa-route" style="font-size: 2rem; color: var(--orange); margin-bottom: 20px;"></i>
+        <h3>Akses Transportasi</h3>
+        <p style="color: var(--muted); margin-bottom: 15px; font-size: 0.95rem;">Sangat mudah diakses tanpa ribet macet:</p>
+        <div style="text-align: left; font-size: 0.92rem; line-height: 1.6;">
+          <div style="margin-bottom: 12px; background: rgba(255,255,255,0.02); padding: 10px; border-radius: 12px; border-left: 3px solid #00529c;">
+            <strong><i class="fas fa-train"></i> KRL Commuter Line</strong>
+            <p style="color: var(--muted); margin-top: 4px;">Turun di <strong>Stasiun Universitas Pancasila</strong>. Posisi stasiun tepat di seberang lokasi, tinggal jalan kaki.</p>
+          </div>
+          <div style="background: rgba(255,255,255,0.02); padding: 10px; border-radius: 12px; border-left: 3px solid #e72426;">
+            <strong><i class="fas fa-bus"></i> Busway (Transjakarta)</strong>
+            <p style="color: var(--muted); margin-top: 4px;">Turun di <strong>Halte SMA 38</strong>. Posisi halte busway berada tepat di sebelah lokasi.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="store-card" data-aos="fade-up" data-aos-delay="200">
+        <i class="fas fa-clock" style="font-size: 2rem; color: var(--orange); margin-bottom: 20px;"></i>
+        <h3>Social & Jam Buka</h3>
+        <div style="margin: 15px 0; font-size: 0.95rem; text-align: left; line-height: 1.6; color: var(--muted);">
+          <p style="margin-bottom: 8px;">
+            <i class="fas fa-calendar-day" style="color: var(--orange); width: 20px;"></i> Senin - Jumat:<br>
+            <strong style="color: #fff; padding-left: 24px;">12:00 — 21:00 WIB</strong>
+          </p>
+          <p style="margin-bottom: 8px;">
+            <i class="fas fa-calendar-plus" style="color: var(--orange); width: 20px;"></i> Sabtu:<br>
+            <strong style="color: #fff; padding-left: 24px;">16:00 — 00:00 WIB</strong>
+          </p>
+          <p>
+            <i class="fas fa-coffee" style="color: var(--muted); width: 20px;"></i> Minggu: <span style="color: #ff5555; font-weight: 600;">Close / Libur</span>
+          </p>
+        </div>
+        
+        <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.08);">
+          <div class="store-links">
+            <a href="https://instagram.com/octurnix" target="_blank" style="margin-bottom: 10px; display: block; text-align: center;">
+              <i class="fab fa-instagram"></i> @octurnix
+            </a>
+            <a href="https://gofood.co.id/" target="_blank"><i class="fas fa-motorcycle"></i> GoFood</a>
+            <a href="https://grab.com/id/food/" target="_blank"><i class="fas fa-utensils"></i> GrabFood</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </section>
 
 <footer>
-    <p>© 2025 Octurn!X Coffee. Crafted with Passion.</p>
+  © 2026 OCTURN!X COFFEE
 </footer>
 
-<div class="whatsapp-fab" onclick="kirimWA()" style="cursor: pointer;">
-  <i class="fab fa-whatsapp"></i>
-  <span class="tooltip-text">Pesan Sekarang!</span>
+<div class="cart-button" onclick="toggleCart()">
+  <i class="fas fa-shopping-cart"></i>
+  <div class="cart-count" id="cartCount">0</div>
 </div>
 
-<div class="modal-overlay" id="orderModal">
-    <div class="modal-content">
-        <span class="close-modal" onclick="closeOrderModal()">&times;</span>
-        <h2 style="font-family: 'Patrick Hand'; color: #001f3f;">Mau Pesan Lewat Mana?</h2>
-        <p style="margin-top:10px; color:#666;">Nikmati Octurn!x di rumahmu.</p>
-        
-        <div class="order-options">
-            <a href="https://gofood.co.id" target="_blank" class="order-btn btn-gofood">
-                <i class="fas fa-motorcycle"></i> Pesan via GoFood
-            </a>
-            <a href="https://grab.com/id/food/" target="_blank" class="order-btn btn-grab">
-                <i class="fas fa-utensils"></i> Pesan via GrabFood
-            </a>
-            <a href="javascript:void(0)" onclick="kirimWA()" class="order-btn btn-wa">
-                <i class="fab fa-whatsapp"></i> Chat WhatsApp
-            </a>
-        </div>
+<div class="cart-panel" id="cartPanel">
+  <div class="cart-header">
+    <h2>Your Cart</h2>
+    <button class="close-cart" onclick="toggleCart()"><i class="fas fa-times"></i></button>
+  </div>
+  <div id="cartItems"></div>
+  <div class="cart-footer">
+    <h3 id="cartTotal">Total: Rp 0</h3>
+    <button class="checkout-btn" onclick="openPayment()">Checkout</button>
+  </div>
+</div>
+
+<div class="payment-modal" id="paymentModal">
+  <div class="payment-box">
+    <h2>Complete Order</h2>
+    <p style="margin-top:10px;color:#98a3b5;">Enter your details to proceed with QRIS payment.</p>
+    <div class="payment-form">
+      <input type="text" id="customerName" placeholder="Your Name" required/>
+      <textarea id="customerNote" placeholder="Notes (Optional)..."></textarea>
     </div>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/QR_Code_Example.png" alt="QRIS Code">
+    <div id="paymentTotal"></div>
+    <button onclick="sendWhatsAppOrder()">I've Paid & Send Order</button>
+    <button onclick="closePayment()" class="cancel-btn">Cancel</button>
+  </div>
 </div>
 
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-  AOS.init({
-    duration: 1000,
-    once: true,
-  });
-</script>
 <script src="script.js"></script>
-
 </body>
 </html>
